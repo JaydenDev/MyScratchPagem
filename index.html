@@ -12,24 +12,28 @@
 </head>
 
 <body>
-    <audio autoplay>
-        <source src="img/audio.mp3" type="audio/mp3">
-    </audio>
-    <div class="p-3 flex bg-blue-500 text-white" id="header">
-        <h1>My Scratch Page by JaydenDev, (v0.2.2)</h1>
+    <div class="p-3 bg-blue-500 text-white" id="header">
+        <h1>My Scratch Page by JaydenDev, (v0.3)</h1>
     </div>
-    <div id="content">
-        <input class="p-3 w-full outline-0" id="input" type="text" placeholder="Enter text here">
+    <input class="bg-gray-200 rounded-b-lg m-auto p-3 w-full outline-0" id="input" type="text" placeholder="Enter text here">
+    <br>
+    <p id="novalerr" class="my-3 bg-blue-500 rounded-full text-white w-fit m-auto p-1 text-1xl text-center">No user is set, when you type in a user and press enter the information will appear</p>
+    <div id="usercontent" class="bg-gray-200 m-auto invisible">
         <div class="bg-gray-200 h-screen w-screen" id="header">
-            <div class="flex">
-                <label class="text-4xl">My name is:</label>&nbsp;
-                <h1 id="username" class="text-4xl"></h1>
+            <div id="changethiscolor" class="rounded-b-lg text-white h-fit bg-blue-500">&nbsp;
+                <div class="flex">
+                    <img class="rounded-full" height="30" width="70" id="pfp"></img>&nbsp;
+                    <h1 class="bg-white rounded-full p-3 text-4xl my-auto" id="username"></h1>
+                </div>
+                <p class="text-2xl text-center" id="motd" class="text-3xl "></p>
             </div>
-            <p id="motd" class="text-1xl"></p>
-            <div class="flex">
-                <label>The forum I'm most active in is:</label>&nbsp;
+            <div class="bg-red-500 m-auto w-fit my-3 rounded-full p-1 text-white flex">
+                <label>Favorite Topic:</label>&nbsp;
                 <p id="mostPostedForum"></p>
-                <img id="pfp"></img>
+            </div>
+            <div class="bg-orange-500 m-auto w-fit my-3 rounded-full p-1 text-white flex">
+                <label>Total Posts:</label>&nbsp;
+                <p id="totalPosts"></p>
             </div>
         </div>
     </div>
