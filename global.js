@@ -1,3 +1,5 @@
+const disallowedChars = ['<', '>', '&', '"', '\''];
+
 // use jquery so that when enter is pressed in the input field, fetchData is called
 $(document).ready(function() {
     $('#input').keypress(function(e) {
@@ -104,4 +106,9 @@ function refreshStat() {
             const { status } = data;
             document.getElementById("motd").innerText = status;
         });
+    // if sig contains characters that are not allowed, remove them
+    for (let i = 0; i < disallowedChars.length; i++) {
+        sig.replace(disallowedChars[i], '');
+    }
+    document.getElementById("signature").innerText = sig;
 }
