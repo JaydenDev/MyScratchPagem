@@ -3,6 +3,10 @@ $(document).ready(function() {
     $('#input').keypress(function(e) {
         if (e.which == 13) {
             fetchData();
+            // remove class 'invisible' from id usercontent
+            $('#usercontent').removeClass('invisible');
+            // remove the novalerr id element
+            $('#novalerr').remove();
         }
     });
 });
@@ -18,9 +22,8 @@ function fetchData() {
                 $('#input').val('');
             }
             const { color, status } = data;
-            document.getElementById("header").style.backgroundColor = color;
-            document.getElementById("motd").innerText = "My ocular status is: " + status;
-            $('#username').css('color', color);
+            document.getElementById("motd").innerText = status;
+            document.getElementById("username").style.color = color;
         });
     document.querySelector('#username').innerText = input;
     // Made by @webdev03
@@ -29,6 +32,7 @@ function fetchData() {
         .then(data => {
             // Get the counts
             const counts = data.counts;
+            const total = data.counts.total.count;
             // Get the keys in the counts object, and then reverse it
             let keys = Object.keys(counts).reverse();
             // The reason why we reverse it is to use .pop which removes the last element (since it is reversed, the first element, which is "total")
@@ -46,14 +50,12 @@ function fetchData() {
                 }
             }
             // mostPostedForum and mostPostedForumCount
+            // set id totalPosts to the total value
+            document.getElementById("totalPosts").innerText = total;
             document.querySelector('#mostPostedForum').innerText = mostPostedForum;
+            console.log(total);
         });
-    fetch('https://my-ocular.jeffalo.net/api/user/' + input)
-        .then(res => res.json())
-        .then(data => {
-            // grab "id" from the data
-            const { id } = data;
-            const img = "https://uploads.scratch.mit.edu/get_image/user/" + data.id + "_60x60.png";
-            $('#pfp').attr('src', img);
-        });
+
+    const img = "https://my-ocular.jeffalo.net/api/user/" + input + "/picture";
+    $('#pfp').attr('src', img);
 }
