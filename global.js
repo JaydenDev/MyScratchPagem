@@ -33,6 +33,7 @@ function fetchData() {
             // Get the counts
             const counts = data.counts;
             const total = data.counts.total.count;
+            const original_sig = data.signature;
             // Get the keys in the counts object, and then reverse it
             let keys = Object.keys(counts).reverse();
             // The reason why we reverse it is to use .pop which removes the last element (since it is reversed, the first element, which is "total")
@@ -54,6 +55,15 @@ function fetchData() {
             document.getElementById("totalPosts").innerText = total;
             document.querySelector('#mostPostedForum').innerText = mostPostedForum;
             console.log(total);
+            // remove all images from sig
+            let sigWithoutImages = original_sig.replace(/<img[^>]*>/g, "");
+            // remove all links from sig
+            let sig = sigWithoutImages.replace(/<a[^>]*>/g, "");
+            // remove all html tags from sig
+            sig = sig.replace(/<[^>]*>/g, "");
+            // remove underscores and arrows from sig
+            sig = sig.replace(/[\u00A0-\u9999<>\&]/gim, '');
+            document.querySelector('#signature').innerText = sig;
         });
 
     const img = "https://my-ocular.jeffalo.net/api/user/" + input + "/picture";
