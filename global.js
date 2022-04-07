@@ -90,3 +90,18 @@ if (localStorage.getItem('popup') === 'true') {
 } else {
     $('#popup').addClass('invisible');
 }
+
+function refreshStat() {
+    const input = document.getElementById('input').value;
+    fetch('https://my-ocular.jeffalo.net/api/user/' + input)
+        .then(res => res.json())
+        .then(data => {
+            // if the user is not found, display error message
+            if (data.error) {
+                alert("invalid user");
+                $('#input').val('');
+            }
+            const { status } = data;
+            document.getElementById("motd").innerText = status;
+        });
+}
