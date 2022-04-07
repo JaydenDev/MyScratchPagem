@@ -76,3 +76,17 @@ if (window.location.href.split('?')[1] !== undefined) {
     document.getElementById('input').value = user;
     fetchData();
 }
+
+function closePopup() {
+    // remove div by id popup
+    $('#popup').remove();
+    // save popup state to local storage
+    localStorage.setItem('popup', 'false');
+}
+
+// if popup state is true, display popup if not, hide popup
+if (localStorage.getItem('popup') === 'true') {
+    $('#popup').removeClass('invisible');
+} else {
+    $('#popup').addClass('invisible');
+}

@@ -19,8 +19,8 @@
     <br>
     <p id="novalerr" class="my-3 bg-blue-500 rounded-full text-white w-fit m-auto p-1 text-1xl text-center">No user is set, when you type in a user and press enter the information will appear</p>
     <div id="usercontent" class="bg-gray-200 m-auto invisible">
-        <div class="bg-gray-200 h-screen w-screen" id="header">
-            <div id="changethiscolor" class=" text-white h-fit bg-blue-500">&nbsp;
+        <div class="bg-gray-200 w-screen" id="header">
+            <div id="changethiscolor" class=" text-white bg-blue-500">&nbsp;
                 <div class="flex">
                     <img class="rounded-full" height="30" width="70" id="pfp"></img>&nbsp;
                     <h1 class="bg-white rounded-full p-3 text-4xl my-auto" id="username"></h1>
@@ -39,6 +39,13 @@
                 <p id="totalPosts"></p>
             </div>
         </div>
+    </div>
+    <div id="popup" class="fixed bottom-0 m-2 p-2 animate-bounce text-white left:0 w-fit bg-indigo-500 rounded-md shadow-sm">
+        <article>
+            <button onClick="closePopup()" class="text-white rounded-sm">X</button>
+            <h1>Get a dynamic status!</h1>
+            <a href="aviateapp.eu.org">Try aviate!</a>
+        </article>
     </div>
 </body>
 
