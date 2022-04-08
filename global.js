@@ -37,6 +37,10 @@ function fetchData() {
             }
             const { status } = data;
             document.querySelector('#aviate').innerText = status;
+            // if status doesn't get defined, display error message
+            if (status === undefined) {
+                document.querySelector('#aviate').innerText = 'Aviate status not set';
+            }
         });
     document.querySelector('#username').innerText = input;
     // Made by @webdev03
