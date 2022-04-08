@@ -27,6 +27,17 @@ function fetchData() {
             document.getElementById("motd").innerText = status;
             document.getElementById("username").style.color = color;
         });
+    fetch('https://aviateapp.eu.org/api/' + input)
+        .then(res => res.json())
+        .then(data => {
+            // if the user is not found, display error message
+            if (data.error) {
+                alert("invalid user");
+                $('#input').val('');
+            }
+            const { status } = data;
+            document.querySelector('#aviate').innerText = status;
+        });
     document.querySelector('#username').innerText = input;
     // Made by @webdev03
     fetch('https://scratchdb.lefty.one/v3/forum/user/info/' + document.querySelector('#input').value, )
@@ -66,6 +77,10 @@ function fetchData() {
             // remove underscores and arrows from sig
             sig = sig.replace(/[\u00A0-\u9999<>\&]/gim, '');
             document.querySelector('#signature').innerText = sig;
+            // if sig is empty, display N/A
+            if (sig == "") {
+                document.querySelector('#signature').innerText = "Not set, or only contains images";
+            }
         });
 
     const img = "https://my-ocular.jeffalo.net/api/user/" + input + "/picture";
@@ -106,9 +121,6 @@ function refreshStat() {
             const { status } = data;
             document.getElementById("motd").innerText = status;
         });
-    // if sig contains characters that are not allowed, remove them
-    for (let i = 0; i < disallowedChars.length; i++) {
-        sig.replace(disallowedChars[i], '');
-    }
+    // for debug
     document.getElementById("signature").innerText = sig;
 }
