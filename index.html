@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="tw.css">
 </head>
 
-<body>
-    <div class="p-3 bg-blue-500 text-white" id="header">
+<body class="bg-cover bg-[url('bg.svg')]">
+    <div class="p-3 bg-opacity-20 backdrop-blur-xl bg-blue-500 text-white" id="header">
         <h1>MyScratchPage</h1>
     </div>
     <input class="bg-gray-200 rounded-b-lg m-auto p-3 w-full outline-0" id="input" type="text" placeholder="Username">
@@ -20,17 +20,20 @@
     <p id="novalerr" class="my-3 bg-blue-500 rounded-full text-white w-fit m-auto p-1 text-1xl text-center">No user is set, when you type in a user and press enter the information will appear</p>
     <div id="usercontent" class="m-auto invisible">
         <div class=" w-screen" id="header">
-            <div id="changethiscolor" class=" text-white ">&nbsp;
-                <div class="flex">
-                    <img class="rounded-full mx-2 " height="30 " width="70 " id="pfp"></img>&nbsp;
-                    <h1 class="rounded-full p-3 text-4xl my-auto bg-gray-200" id="username"></h1>
+            <div class="flex">
+                <div id="changethiscolor" class=" text-white ">&nbsp;
+                    <div class="flex">
+                        <img class="rounded-full mx-2 " height="30 " width="70 " id="pfp"></img>&nbsp;
+                        <h1 class="rounded-full p-3 text-4xl my-auto bg-gray-200" id="username"></h1>&nbsp;
+                        <p class="text-2xl text-center text-black w-fit bg-gray-200 rounded-lg m-auto p-1" onClick="refreshStat() " id="motd" class="text-3xl "></p>
+
+                    </div>
                 </div>
-                <p class="text-2xl text-center text-black w-fit bg-gray-200 rounded-lg m-auto p-3" onClick="refreshStat() " id="motd" class="text-3xl "></p>
             </div>
             <div class="bg-indigo-500 rounded-md m-auto w-80 my-3 p-2 text-white ">
                 <p id="signature"></p>
             </div>
-            <div class="bg-indigo-600 rounded-md m-auto w-fit my-3 p-2 text-white ">
+            <div class="bg-indigo-600 rounded-md m-auto w-fit my-3 p-2 text-white">
                 <p><b>New!</b> Your aviate status will be displayed below!</p>
                 <p id="aviate"></p>
             </div>
@@ -44,7 +47,7 @@
             </div>
         </div>
     </div>
-    <div id="popup" class="fixed bottom-0 m-2 p-2 animate-bounce text-white left:0 w-fit bg-indigo-500 rounded-md shadow-sm ">
+    <div id="popup" class="bg-opacity-50 backdrop-blur-3xl fixed bottom-0 m-2 p-2 animate-bounce text-white left:0 w-fit bg-indigo-500 rounded-md shadow-sm ">
         <article>
             <button onClick="closePopup()" class="text-white rounded-sm ">X</button>
             <h1>Get a dynamic status!</h1>
@@ -52,7 +55,7 @@
         </article>
     </div>
     <div id="verstring" class="fixed bottom-0 rounded-full right-0 p-2 m-2 text-white w-fit bg-blue-500 ">
-        <p>v0.3.2</p>
+        <p>v0.3.3</p>
     </div>
 </body>
 

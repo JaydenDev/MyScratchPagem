@@ -30,10 +30,9 @@ function fetchData() {
     fetch('https://aviateapp.eu.org/api/' + input)
         .then(res => res.json())
         .then(data => {
-            // if the user is not found, display error message
+            // if the api cannot be reached, set aviate to 'N/A'
             if (data.error) {
-                alert("invalid user");
-                $('#input').val('');
+                document.getElementById("aviate").innerText = "N/A";
             }
             const { status } = data;
             document.querySelector('#aviate').innerText = status;
