@@ -50,6 +50,10 @@ function fetchData() {
             const counts = data.counts;
             const total = data.counts.total.count;
             const original_sig = data.signature;
+            // if counts is undefined make an alert that ScratchDB is down
+            if (counts === undefined) {
+                alert("ScratchDB is down");
+            }
             // Get the keys in the counts object, and then reverse it
             let keys = Object.keys(counts).reverse();
             // The reason why we reverse it is to use .pop which removes the last element (since it is reversed, the first element, which is "total")
