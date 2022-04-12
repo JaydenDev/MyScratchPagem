@@ -12,6 +12,16 @@ $(document).ready(function() {
         }
     });
 });
+// use jquery if button id go is clicked then fetchData is called
+$(document).ready(function() {
+    $('#go').click(function() {
+        fetchData();
+        // remove class 'invisible' from id usercontent
+        $('#usercontent').removeClass('invisible');
+        // remove the novalerr id element
+        $('#novalerr').remove();
+    });
+});
 
 function fetchData() {
     const input = document.getElementById('input').value;
