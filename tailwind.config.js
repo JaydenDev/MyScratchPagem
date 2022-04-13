@@ -4,7 +4,4 @@ module.exports = {
         extend: {},
     },
     plugins: [],
-    backgroundImage: {
-        'bgimg': "url('bg.svg')",
-    },
 }
