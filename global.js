@@ -104,13 +104,6 @@ function fetchData() {
     $('#pfp').attr('src', img);
 }
 
-// if url argument "user" is not empty, parse it
-if (window.location.href.split('?')[1] !== undefined) {
-    const user = window.location.href.split('?')[1].split('=')[1];
-    document.getElementById('input').value = user;
-    fetchData();
-}
-
 function closePopup() {
     // remove div by id popup
     $('#popup').remove();
