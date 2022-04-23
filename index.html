@@ -11,53 +11,35 @@
     <link rel="stylesheet" href="tw.css">
 </head>
 
-<body class="bg-cover bg-[url('bg.svg')]">
-    <div class="p-3 bg-opacity-20 backdrop-blur-xl bg-blue-500 text-white" id="header">
-        <h1>MyScratchPage</h1>
+<body class="text-white bg-[url('./bg.svg')] bg-gray-900">
+    <div class="p-2 bg-gray-800/30 backdrop-blur-xl flex space-x-2 text-white" id="header">
+        <h1 class="text-3xl">MyScratchPage</h1><input class="fixed right-0 bg-gray-200/30  placeholder-white backdrop-blur-xl rounded-full p-2 outline-0" id="input" type="text" placeholder="Username">
     </div>
-    <input class="bg-gray-200 rounded-b-lg m-auto p-3 w-[90%] outline-0" id="input" type="text" placeholder="Username"><button id="go" class="bg-blue-500 rounded-b-lg m-auto p-3 text-white w-[10%] outline-0">Go</button>
     <br>
-    <p id="novalerr" class="my-3 bg-blue-500 rounded-full text-white w-fit m-auto p-1 text-1xl text-center">No user is set, when you type in a user and press enter the information will appear</p>
+    <br>
+    <div class="w-fit m-auto"></div>
     <div id="usercontent" class="m-auto invisible">
-        <div class=" w-screen" id="header">
-            <div class="flex">
+        <div class="w-full flex" id="header">
+            <div class="bg-gray-800/30 backdrop-blur-xl  p-3 w-full ">
                 <div id="changethiscolor" class=" text-white ">&nbsp;
-                    <div class="flex">
-                        <img class="rounded-full mx-2 " height="30 " width="70 " id="pfp"></img>&nbsp;
-                        <h1 class="rounded-full p-3 text-4xl my-auto bg-gray-200" id="username"></h1>&nbsp;
-                        <p class="text-2xl text-center text-black w-fit bg-gray-200 rounded-lg m-auto p-1" id="motd" class="text-3xl "></p>&nbsp;
-                        <button onClick="refreshStat()" class="bg-blue-500 rounded-full m-auto p-3" id="logout">Refresh</button>
+                    <div class="max-h-25 flex">
+                        <img class="max-h-25 max-w-25 mx-2 h-30 w-30" id="pfp"></img>&nbsp;
+                        <h1 class=" p-3 text-4xl text-white bg-gray-200/30 backdrop-blur-xl" id="username"></h1>&nbsp;
+                        <p class="text-white w-fit text-4xl bg-gray-200/30 backdrop-blur-xl  ml-2 p-3 " id="motd" class="text-3xl "></p>&nbsp;
                     </div>
                 </div>
             </div>
-            <div class="bg-indigo-500 rounded-md m-auto md:w-40 lg:w-80 my-3 p-2 text-white ">
-                <p id="signature"></p>
-            </div>
-            <div class="bg-indigo-600 lg:w-1/2 rounded-md m-auto w-fit my-3 p-2 text-white">
-                <p><b>New!</b> Your aviate status will be displayed below!</p>
-                <p id="aviate"></p>
-            </div>
-            <div class="bg-red-500 m-auto w-fit my-3 rounded-full p-1 text-white flex ">
-                <label>Favorite Topic:</label>&nbsp;
-                <p id="mostPostedForum"></p>
-            </div>
-            <div class="bg-orange-500 m-auto w-fit my-3 rounded-full p-1 text-white flex ">
-                <label>Total Posts:</label>&nbsp;
-                <p id="totalPosts"></p>
-            </div>
         </div>
-    </div>
-    <div id="popup" class="bg-opacity-50 backdrop-blur-3xl fixed bottom-0 m-2 p-2 animate-bounce text-white left:0 w-fit bg-indigo-500 rounded-md shadow-sm ">
-        <article>
-            <button onClick="closePopup()" class="text-white rounded-sm ">X</button>
-            <h1>Get a dynamic status!</h1>
-            <a href="aviateapp.eu.org">Try aviate!</a>
-        </article>
-    </div>
-    <div id="verstring" class="fixed bottom-0 rounded-full right-0 p-2 m-2 text-white w-fit bg-blue-500 ">
-        <p>v0.3.3</p>
-    </div>
-    <script src="./urlArgs.js"></script>
+        <div class="bg-gray-800/60 backdrop-blur-xl w-full rounded-md m-auto p-2 text-white ">
+            <p class="text-center text-3xl" id="joined"></p>
+            <p id="aviate"></p>
+            <p id="mostPostedForum"></p>
+            <p class="text-center" id="totalPosts"></p>
+            <p id="signature"></p>
+            <p class="max-h-[5%]" id="imgs"></p>
+            <p id="bio"></p>
+        </div>
+        <script src="./urlArgs.js "></script>
 </body>
 
 </html>

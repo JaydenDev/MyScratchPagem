@@ -1,7 +1,9 @@
 module.exports = {
     content: ["./index.html"],
     theme: {
-        extend: {},
-    },
-    plugins: [],
+        screens: {
+            'mobile': '640px',
+            'desktop': '1024px',
+        },
+    }
 }

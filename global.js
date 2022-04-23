@@ -28,21 +28,36 @@ function fetchData() {
     fetch('https://my-ocular.jeffalo.net/api/user/' + input)
         .then(res => res.json())
         .then(data => {
-            // if the user is not found, display error message
             if (data.error) {
-                alert("invalid user");
-                $('#input').val('');
+                return;
             }
             const { color, status } = data;
             document.getElementById("motd").innerText = status;
             document.getElementById("username").style.color = color;
+        });
+    fetch('https://proxy.jaydendev.repl.co/api.scratch.mit.edu/users/' + input)
+        .then(res => res.json())
+        .then(data => {
+            if (data.error) {
+                return;
+            }
+            const { bio } = data.profile;
+            document.getElementById("bio").innerText = bio;
+            console.log(bio);
+            // parsed joined date to a more readable format
+            const { joined } = data.history;
+            const date = new Date(joined);
+            const month = date.getMonth() + 1;
+            const day = date.getDate();
+            const year = date.getFullYear();
+            document.getElementById("joined").innerText = `Joined: ${month}/${day}/${year}`;
         });
     fetch('https://aviateapp.eu.org/api/' + input)
         .then(res => res.json())
         .then(data => {
             // if the api cannot be reached, set aviate to 'N/A'
             if (data.error) {
-                document.getElementById("aviate").innerText = "N/A";
+                return;
             }
             const { status } = data;
             document.querySelector('#aviate').innerText = status;
@@ -59,7 +74,7 @@ function fetchData() {
             // Get the counts
             const counts = data.counts;
             const total = data.counts.total.count;
-            const original_sig = data.signature;
+            const sig = data.signature;
             // if counts is undefined make an alert that ScratchDB is down
             if (counts === undefined) {
                 alert("ScratchDB is down");
@@ -86,17 +101,17 @@ function fetchData() {
             document.querySelector('#mostPostedForum').innerText = mostPostedForum;
             console.log(total);
             // remove all images from sig
-            let sigWithoutImages = original_sig.replace(/<img[^>]*>/g, "");
-            // remove all links from sig
-            let sig = sigWithoutImages.replace(/<a[^>]*>/g, "");
-            // remove all html tags from sig
-            sig = sig.replace(/<[^>]*>/g, "");
-            // remove underscores and arrows from sig
-            sig = sig.replace(/[\u00A0-\u9999<>\&]/gim, '');
-            document.querySelector('#signature').innerText = sig;
+            // remove all script tags from sig
+            cleanSig = sig.replace(/<script[^>]*>([\S\s]*?)<\/script>/g, "");
+            // get all images from sig and set to var imgs
+            let imgs = cleanSig.match(/<img[^>]*>/g);
+            // remove images from sig
+            cleanSig = cleanSig.replace(/<img[^>]*>/g, "");
+            document.querySelector('#signature').innerHTML = cleanSig;
+            document.querySelector('#imgs').innerHTML = imgs;
             // if sig is empty, display N/A
-            if (sig == "") {
-                document.querySelector('#signature').innerText = "Not set, or only contains images";
+            if (cleanSig == "") {
+                document.querySelector('#signature').innerHTML = "Not set, or only contains images";
             }
         });
 
@@ -131,6 +146,4 @@ function refreshStat() {
             const { status } = data;
             document.getElementById("motd").innerText = status;
         });
-    // for debug
-    document.getElementById("signature").innerText = sig;
 }
