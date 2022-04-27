@@ -1,14 +1,10 @@
 const disallowedChars = ['<', '>', '&', '"', '\''];
 
-// use jquery so that when enter is pressed in the input field, fetchData is called
 $(document).ready(function() {
     $('#input').keypress(function(e) {
         if (e.which == 13) {
             fetchData();
-            // remove class 'invisible' from id usercontent
-            $('#usercontent').removeClass('invisible');
-            // remove the novalerr id element
-            $('#novalerr').remove();
+            $('#usercontent').removeClass('hidden');
         }
     });
 });
@@ -18,10 +14,17 @@ function fetchData() {
     fetch('https://my-ocular.jeffalo.net/api/user/' + input)
         .then(res => res.json())
         .then(data => {
-            // if the user is not found, display error message
             if (data.error) {
-                alert("invalid user");
-                $('#input').val('');
+                $('#notification').removeClass('hidden');
+                $('#notification').removeClass('bg-blue-500');
+                $('#notification').addClass('bg-red-500');
+                $('#notification').text("Specified user not found");
+                $('#notification').addClass('animate-pulse');
+                $('#usercontent').addClass('hidden');
+                setTimeout(function() {
+                    $('#notification').addClass('hidden');
+                }
+                , 2000);
             }
             const { color, status } = data;
             document.getElementById("motd").innerText = status;
@@ -35,7 +38,7 @@ function fetchData() {
             // Get the counts
             const counts = data.counts;
             const total = data.counts.total.count;
-            const original_sig = data.signature;
+            const sig = data.signature;
             // Get the keys in the counts object, and then reverse it
             let keys = Object.keys(counts).reverse();
             // The reason why we reverse it is to use .pop which removes the last element (since it is reversed, the first element, which is "total")
@@ -54,43 +57,13 @@ function fetchData() {
             }
             // mostPostedForum and mostPostedForumCount
             // set id totalPosts to the total value
+            document.querySelector('#topForum').innerText = mostPostedForum;
             document.getElementById("totalPosts").innerText = total;
-            document.querySelector('#mostPostedForum').innerText = mostPostedForum;
-            console.log(total);
-            // remove all images from sig
-            let sigWithoutImages = original_sig.replace(/<img[^>]*>/g, "");
-            // remove all links from sig
-            let sig = sigWithoutImages.replace(/<a[^>]*>/g, "");
-            // remove all html tags from sig
-            sig = sig.replace(/<[^>]*>/g, "");
-            // remove underscores and arrows from sig
-            sig = sig.replace(/[\u00A0-\u9999<>\&]/gim, '');
-            document.querySelector('#signature').innerText = sig;
+            document.querySelector('#signature').innerHTML = sig;
         });
 
     const img = "https://my-ocular.jeffalo.net/api/user/" + input + "/picture";
     $('#pfp').attr('src', img);
-}
-
-// if url argument "user" is not empty, parse it
-if (window.location.href.split('?')[1] !== undefined) {
-    const user = window.location.href.split('?')[1].split('=')[1];
-    document.getElementById('input').value = user;
-    fetchData();
-}
-
-function closePopup() {
-    // remove div by id popup
-    $('#popup').remove();
-    // save popup state to local storage
-    localStorage.setItem('popup', 'false');
-}
-
-// if popup state is true, display popup if not, hide popup
-if (localStorage.getItem('popup') === 'true') {
-    $('#popup').removeClass('invisible');
-} else {
-    $('#popup').addClass('invisible');
 }
 
 function refreshStat() {

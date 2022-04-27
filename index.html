@@ -5,51 +5,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project</title>
+    <title>MyScratchPage</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="global.js"></script>
+    <link rel="shortcut icon" href="https://jdev.eu.org/img/browser/favicon.png">
     <link rel="stylesheet" href="tw.css">
 </head>
 
-<body>
-    <div class="p-3 bg-blue-500 text-white" id="header">
+<body class="text-white bg-gray-800">
+    <div class="p-3 bg-gray-900 text-white" id="header">
         <h1>MyScratchPage</h1>
     </div>
-    <input class="bg-gray-200 rounded-b-lg m-auto p-3 w-full outline-0" id="input" type="text" placeholder="Username">
+    <div id="notification" class="bg-blue-500 flex text-white w-full p-3">
+        <p>Not seeing the right status..? Maybe the user decided to have their Aviate status shown through the ocular API.</p>
+        <p onClick="closePopup()" class="fixed right-0 mr-2 ">x</p>
+    </div>
+    <input class="bg-gray-700  m-auto p-3 w-full outline-0" id="input" type="text" placeholder="Username">
     <br>
-    <p id="novalerr" class="my-3 bg-blue-500 rounded-full text-white w-fit m-auto p-1 text-1xl text-center">No user is set, when you type in a user and press enter the information will appear</p>
-    <div id="usercontent" class="m-auto invisible">
-        <div class=" w-screen" id="header">
-            <div id="changethiscolor" class=" text-white bg-blue-500 ">&nbsp;
-                <div class="flex">
-                    <img class="rounded-full " height="30 " width="70 " id="pfp"></img>&nbsp;
-                    <h1 class="bg-white rounded-full p-3 text-4xl my-auto " id="username"></h1>
+    <div id="usercontent" class="hidden m-auto">
+        <div class="w-screen" id="header">
+            <div class="text-white bg-gray-700 content-center">
+                <div class="space-x-2 p-3  flex">
+                    <img class="shadow-xl" height="30" width="70" id="pfp"></img>
+                    <h1 class="bg-white  p-3 text-4xl " id="username"></h1>
+                    <p class="bg-white flex lg:text-2xl md:text-4xl sm:text-6xl  text-black text-center " onClick="refreshStat() " id="motd" class="text-3xl "></p>
                 </div>
-                <p class="text-2xl text-center " onClick="refreshStat() " id="motd" class="text-3xl "></p>
-            </div>
-            <div class="bg-indigo-500 rounded-lg m-auto w-fit my-3 p-1 text-white ">
-                <p id="signature"></p>
-            </div>
-            <div class="bg-red-500 m-auto w-fit my-3 rounded-full p-1 text-white flex ">
-                <label>Favorite Topic:</label>&nbsp;
-                <p id="mostPostedForum"></p>
-            </div>
-            <div class="bg-orange-500 m-auto w-fit my-3 rounded-full p-1 text-white flex ">
-                <label>Total Posts:</label>&nbsp;
-                <p id="totalPosts"></p>
             </div>
         </div>
+        <div class="text-4xl flex space-x-2 bg-gray-600 text-white p-3 rounded-sm my-3 w-fit m-auto">
+            <h1 >Posts: </h1>
+            <p class="text-blue-500" id="totalPosts"></p>
+            <h1>Top Forum: </h1>
+            <p class="text-emerald-500" id="topForum"></p>
+        </div>
+        <div class="text-4xl bg-gray-600 p-3 rounded-sm my-3 m-2"><p id="signature"></p></div>
     </div>
-    <!-- <div id="popup" class="fixed bottom-0 m-2 p-2 animate-bounce text-white left:0 w-fit bg-indigo-500 rounded-md shadow-sm ">
-        <article>
-            <button onClick="closePopup()" class="text-white rounded-sm ">X</button>
-            <h1>Get a dynamic status!</h1>
-            <a href="aviateapp.eu.org">Try aviate!</a>
-        </article>
-    </div> -->
-    <div id="verstring" class="fixed bottom-0 rounded-full right-0 p-2 m-2 text-white w-fit bg-blue-500 ">
-        <p>v0.3.1</p>
-    </div>
+    <script src="./startup.js"></script>
 </body>
 
 </html>
