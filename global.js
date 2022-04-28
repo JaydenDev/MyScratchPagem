@@ -11,6 +11,16 @@ $(document).ready(function() {
 
 function fetchData() {
     const input = document.getElementById('input').value;
+    fetch('https://aviateapp.eu.org/api/' + input)
+    .then(res => res.json())
+    .then(data => {
+        if (data.error) {
+            console.log("Falling back to Ocular stauts...");
+            useOcularStatus();
+        }
+        const { status } = data;
+        document.getElementById("motd").innerText = status;
+    });
     fetch('https://my-ocular.jeffalo.net/api/user/' + input)
         .then(res => res.json())
         .then(data => {
@@ -27,7 +37,9 @@ function fetchData() {
                 , 2000);
             }
             const { color, status } = data;
+            function useOcularStatus() {
             document.getElementById("motd").innerText = status;
+            }
             document.getElementById("username").style.color = color;
         });
     document.querySelector('#username').innerText = input;
