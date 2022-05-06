@@ -16,14 +16,14 @@
     <div class="p-3 bg-gray-900 text-white" id="header">
         <h1>MyScratchPage</h1>
     </div>
-    <div id="notification" class="bg-blue-500 flex text-white w-full p-3">
+    <div aria-label="notification" id="notification" class="bg-blue-500 flex text-white w-full p-3">
         <p>Not seeing the right status..? Maybe the user decided to have their Aviate status shown through the ocular API.</p>
         <p onClick="closePopup()" class="fixed right-0 mr-2 ">x</p>
     </div>
-    <input class="bg-gray-700  m-auto p-3 w-full outline-0" id="input" type="text" placeholder="Username">
+    <input aria-label="input box" class="bg-gray-700  m-auto p-3 w-full outline-0" id="input" type="text" placeholder="Username">
     <br>
-    <div id="usercontent" class="hidden m-auto">
-        <div class="w-screen" id="header">
+    <div aria-label="content" id="usercontent" class="hidden m-auto">
+        <div class="w-screen" aria-label="header" id="header">
             <div class="text-white bg-gray-700 content-center">
                 <div class="space-x-2 p-3  flex">
                     <img class="shadow-xl" height="30" width="70" id="pfp"></img>
@@ -33,7 +33,7 @@
             </div>
         </div>
         <div class="text-4xl flex space-x-2 bg-gray-600 text-white p-3 rounded-sm my-3 w-fit m-auto">
-            <h1 >Posts: </h1>
+            <h1>Posts: </h1>
             <p class="text-blue-500" id="totalPosts"></p>
             <h1>Top Forum: </h1>
             <p class="text-emerald-500" id="topForum"></p>

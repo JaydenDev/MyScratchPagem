@@ -15,7 +15,9 @@ function fetchData() {
     .then(res => res.json())
     .then(data => {
         if (data.error) {
-            console.log("Falling back to Ocular stauts...");
+            if (logging === "true") {
+                console.log("Falling back to Ocular stauts...");
+            }
             useOcularStatus();
         }
         const { status } = data;
